@@ -18,30 +18,32 @@
  SOFTWARE.
  */
 
-import XCTest
-@testable import emotly
+import Foundation
 
-class emotlyUITests: XCTestCase {
-    let app = XCUIApplication()
-
-    override func setUp() {
-        super.setUp()
-        continueAfterFailure = false
-        app.launchEnvironment = ["UI_TESTING_MODE": "true"]
-        app.launch()
+// This class implement the protocol to get access to the REST API.
+class EmotlyAPIManager: NSObject, EmotlyAPIManagerAbstract {
+    
+    func getOperation(path: String, onCompletion: (NSDictionary) -> Void) {
+        let route = Constant.RESTAPI.BaseURL + path
+        makeHTTPGetRequest(route, onCompletion: { json, err in
+            onCompletion(json as NSDictionary)
+        })
     }
     
-    override func tearDown() {
-        super.tearDown()
-    }
-    
-    func testExample() {
-        XCTAssertEqual(app.tables.count, 1)
-        let table = app.tables.elementBoundByIndex(0)
-        XCTAssertEqual(table.cells.count, 2, "found instead: \(table.cells.debugDescription)")
-
-        table.cells.staticTexts["buh"].tap()
-        table.cells.elementBoundByIndex(0).staticTexts["feels"].tap()
-        table.cells.staticTexts["testgetown"].tap()
+    func makeHTTPGetRequest(path: String, onCompletion: ServiceResponse) {
+        let request: NSMutableURLRequest = NSMutableURLRequest(URL: NSURL(string: path)!)
+        let session = NSURLSession.sharedSession()
+        
+        let task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
+            do {
+                if let jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? NSDictionary {
+                    onCompletion(jsonResult, error)
+                    
+                }
+            } catch let error as NSError {
+                print(error.localizedDescription)
+            }
+        })
+        task.resume()
     }
 }

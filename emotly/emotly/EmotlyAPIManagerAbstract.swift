@@ -18,30 +18,13 @@
  SOFTWARE.
  */
 
-import XCTest
-@testable import emotly
+import Foundation
 
-class emotlyUITests: XCTestCase {
-    let app = XCUIApplication()
+typealias ServiceResponse = (NSDictionary, NSError?) -> Void
 
-    override func setUp() {
-        super.setUp()
-        continueAfterFailure = false
-        app.launchEnvironment = ["UI_TESTING_MODE": "true"]
-        app.launch()
-    }
-    
-    override func tearDown() {
-        super.tearDown()
-    }
-    
-    func testExample() {
-        XCTAssertEqual(app.tables.count, 1)
-        let table = app.tables.elementBoundByIndex(0)
-        XCTAssertEqual(table.cells.count, 2, "found instead: \(table.cells.debugDescription)")
-
-        table.cells.staticTexts["buh"].tap()
-        table.cells.elementBoundByIndex(0).staticTexts["feels"].tap()
-        table.cells.staticTexts["testgetown"].tap()
-    }
+// This protocol is used to define the function to implement to get access to the REST API.
+protocol EmotlyAPIManagerAbstract {
+    func getOperation(path: String, onCompletion: (NSDictionary) -> Void)
+    func makeHTTPGetRequest(path: String, onCompletion: ServiceResponse)
 }
+
