@@ -23,6 +23,7 @@ import Foundation
 // This class implement the protocol to get access to the REST API in a test environment.
 class EmotlyAPIManagerTest: EmotlyAPIManagerAbstract {
     var getOperationWasCalled = false
+    var postOperationWasCalled = false
     var emotlies = [Emotly]()
     
     func convertStringToDictionary(text: String) -> [String:AnyObject]? {
@@ -45,10 +46,36 @@ class EmotlyAPIManagerTest: EmotlyAPIManagerAbstract {
         })
     }
     
+    func postOperation(path: String, bodyParam: NSDictionary,  onCompletion: (NSDictionary) -> Void) {
+        postOperationWasCalled = true
+        makeHTTPpostRequest(path, bodyParam: bodyParam, onCompletion: { json, err in
+            onCompletion(json as NSDictionary)
+        })
+    }
+    
     func makeHTTPGetRequest(path: String, onCompletion: ServiceResponse) {
         let jsonData = "{\"emotlies\": [{\"created_at\": \"2016-05-18T17:06:02Z\",\"mood\": \"buh\",\"nickname\": \"testgetown\"},{\"created_at\": \"2016-05-19T17:06:02Z\",\"mood\": \"happy\",\"nickname\": \"testgetown2\"}]}"
         let result =  convertStringToDictionary(jsonData)!
         onCompletion(result, nil)
+    }
+    
+    func makeHTTPpostRequest(path: String, bodyParam: NSDictionary, onCompletion: ServiceResponse) {
+        if (path == Constant.RESTAPI.Prefix + "/login") {
+            let prefs = NSUserDefaults.standardUserDefaults()
+            prefs.removePersistentDomainForName("Main")
+            
+            let jwt: NSDictionary = [
+                "header": ["algo": "sha256", "type": "jwt"],
+                "payload": ["expire": "ghi", "nickname": "test"],
+                "signature": "dbrGyPEVZaPKy"
+            ]
+            let user = User(nickname: "test", jwt: jwt)
+            prefs.setObject(user.nickname, forKey: "NICKNAME")
+            prefs.setObject(user.jwt, forKey: "JWT")
+            prefs.setInteger(1, forKey: "ISLOGGEDIN")
+            prefs.synchronize()
+        }
+
     }
     
 }

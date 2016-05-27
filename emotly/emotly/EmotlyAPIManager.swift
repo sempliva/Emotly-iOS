@@ -30,6 +30,13 @@ class EmotlyAPIManager: NSObject, EmotlyAPIManagerAbstract {
         })
     }
     
+    func postOperation(path: String, bodyParam: NSDictionary,  onCompletion: (NSDictionary) -> Void) {
+        let route = Constant.RESTAPI.BaseURL + path
+        makeHTTPpostRequest(route, bodyParam: bodyParam, onCompletion: { json, err in
+            onCompletion(json as NSDictionary)
+        })
+    }
+    
     func makeHTTPGetRequest(path: String, onCompletion: ServiceResponse) {
         let request: NSMutableURLRequest = NSMutableURLRequest(URL: NSURL(string: path)!)
         let session = NSURLSession.sharedSession()
@@ -39,6 +46,26 @@ class EmotlyAPIManager: NSObject, EmotlyAPIManagerAbstract {
                 if let jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? NSDictionary {
                     onCompletion(jsonResult, error)
                     
+                }
+            } catch let error as NSError {
+                print(error.localizedDescription)
+            }
+        })
+        task.resume()
+    }
+    
+    func makeHTTPpostRequest(path: String, bodyParam: NSDictionary, onCompletion: ServiceResponse) {
+        let request: NSMutableURLRequest = NSMutableURLRequest(URL: NSURL(string: path)!)
+        let session = NSURLSession.sharedSession()
+        request.HTTPMethod = "POST"
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "content-Type")
+
+        request.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(bodyParam, options: [])
+        
+        let task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
+            do {
+                if let jsonResult = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as? NSDictionary {
+                    onCompletion(jsonResult, error)
                 }
             } catch let error as NSError {
                 print(error.localizedDescription)

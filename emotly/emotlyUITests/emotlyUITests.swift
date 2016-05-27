@@ -36,6 +36,7 @@ class emotlyUITests: XCTestCase {
     }
     
     func testExample() {
+        
         XCTAssertEqual(app.tables.count, 1)
         let table = app.tables.elementBoundByIndex(0)
         XCTAssertEqual(table.cells.count, 2, "found instead: \(table.cells.debugDescription)")

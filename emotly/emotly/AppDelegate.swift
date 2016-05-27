@@ -22,11 +22,26 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
+    
     var window: UIWindow?
-
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        //SET INITIAL CONTROLLER
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        var initialViewController: UIViewController
+        let prefs = NSUserDefaults.standardUserDefaults()
+        let login = prefs.integerForKey("ISLOGGEDIN") as Int
+        if login == 1 {
+            // if already logged in then redirect to EmotlyTableViewController
+            initialViewController = mainStoryboard.instantiateViewControllerWithIdentifier("EmotlyTableViewController") as! EmotlyTableViewController
+        } else {
+            //If not logged in then show LoginViewController
+            initialViewController = mainStoryboard.instantiateViewControllerWithIdentifier("LoginViewController") as!
+            LoginViewController
+        }
+        self.window?.rootViewController = initialViewController
+        self.window?.makeKeyAndVisible()
+        
         // Override point for customization after application launch.
         return true
     }
@@ -52,7 +67,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
 }
 

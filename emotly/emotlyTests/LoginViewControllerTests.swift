@@ -21,16 +21,13 @@
 import XCTest
 @testable import emotly
 
-class EmotlyTableViewControllerTests: XCTestCase {
+class LoginViewControllerTests: XCTestCase {
     var viewController: UIViewController!
     
     override func setUp() {
         super.setUp()
-        let prefs = NSUserDefaults.standardUserDefaults()
-        prefs.setInteger(1, forKey: "ISLOGGEDIN")
-        prefs.synchronize()
         let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-        viewController = storyboard.instantiateViewControllerWithIdentifier("EmotlyTableViewController") as! EmotlyTableViewController
+        viewController = storyboard.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
     }
     
     
@@ -42,20 +39,23 @@ class EmotlyTableViewControllerTests: XCTestCase {
         // Test and Load the View at the Same Time!
         XCTAssertNotNil(viewController.view)
     }
-    
-    func test_fetchEmotlies() {
+
+    func testLogin() {
         let emotlyAPIManagerTest = EmotlyAPIManagerTest()
+        let login_params : NSDictionary = ["user_id": "test", "password": "password"]
         
-        (viewController as! EmotlyTableViewController).getEmotlies(emotlyAPIManagerTest)
+        (viewController as! LoginViewController).login(login_params, restApiService: emotlyAPIManagerTest)
         
         // Test that the RestApiManager was actually called
-        XCTAssertTrue(emotlyAPIManagerTest.getOperationWasCalled)
+        XCTAssertTrue(emotlyAPIManagerTest.postOperationWasCalled)
         
-        // Test that our injected result was assigned
-        // to the emotlies array
-        XCTAssertEqual((viewController as! EmotlyTableViewController).emotlies.count, 2)
+        let prefs = NSUserDefaults.standardUserDefaults()
+        let login = prefs.integerForKey("ISLOGGEDIN") as Int
+        let nickname = prefs.objectForKey("NICKNAME") as! String
+        let jwt = prefs.objectForKey("JWT") as! NSDictionary
         
-        XCTAssertGreaterThan( (viewController as! EmotlyTableViewController).emotlies[1].created_at.timeIntervalSinceReferenceDate,
-                              (viewController as! EmotlyTableViewController).emotlies[0].created_at.timeIntervalSinceReferenceDate)
+        XCTAssertEqual(jwt.allKeys.count, 3)
+        XCTAssertEqual(nickname, "test")
+        XCTAssertEqual(login, 1)
     }
 }

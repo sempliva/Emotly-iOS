@@ -25,6 +25,8 @@ typealias ServiceResponse = (NSDictionary, NSError?) -> Void
 // This protocol is used to define the function to implement to get access to the REST API.
 protocol EmotlyAPIManagerAbstract {
     func getOperation(path: String, onCompletion: (NSDictionary) -> Void)
+    func postOperation(path: String, bodyParam: NSDictionary,  onCompletion: (NSDictionary) -> Void)
     func makeHTTPGetRequest(path: String, onCompletion: ServiceResponse)
+    func makeHTTPpostRequest(path: String, bodyParam: NSDictionary, onCompletion: ServiceResponse)
 }
 
