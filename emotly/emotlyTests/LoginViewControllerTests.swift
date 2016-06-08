@@ -38,6 +38,7 @@ class LoginViewControllerTests: XCTestCase {
     func testViewController() {
         // Test and Load the View at the Same Time!
         XCTAssertNotNil(viewController.view)
+        XCTAssertEqual((viewController as! LoginViewController).buttonSignIn.enabled, false)
     }
 
     func testLogin() {

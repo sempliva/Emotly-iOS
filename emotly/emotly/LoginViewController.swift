@@ -22,6 +22,7 @@ import UIKit
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     // MARK: Properties
+    @IBOutlet weak var notificationLabel: UILabel!
     @IBOutlet weak var buttonSignIn: UIButton!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var user_idTextField: UITextField!
@@ -30,7 +31,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         super.viewDidLoad()
         user_idTextField.delegate = self
         passwordTextField.delegate = self
-        
+
         // Enable the Sign In button only if the text field has a valid value.
         checkValidLoginData()
     }
@@ -47,27 +48,34 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     func textFieldDidEndEditing(textField: UITextField){
         checkValidLoginData()
     }
-
+    
+    
+    
     // MARK: Actions
     @IBAction func signInButton(sender: UIButton) {
-        let user_id: NSString = user_idTextField.text!
-        let password: NSString = passwordTextField.text!
-
+        let user_id = trimWhiteSpaceInTextField(user_idTextField.text!)
+        let password = trimWhiteSpaceInTextField(passwordTextField.text!)
         let login_params : NSDictionary = ["user_id": user_id, "password": password]
         login(login_params)
     }
     
     func checkValidLoginData() {
         // Disable the Save button if the text field is empty.
-        let user_id = user_idTextField.text ?? ""
+        let userId = user_idTextField.text ?? ""
         let password = passwordTextField.text ?? ""
-        buttonSignIn.enabled = !user_id.isEmpty && !password.isEmpty
+        let userIdValidator =  checkMaxLength(userId, minLength: 6, maxLength: 15)
+        let passwordValidator =  checkMaxLength(password, minLength: 8, maxLength: nil)
+        
+        if userIdValidator && passwordValidator {
+            buttonSignIn.enabled = !userId.isEmpty && !password.isEmpty
+        }
     }
 
     func login(login_params: NSDictionary, restApiService: EmotlyAPIManagerAbstract = EmotlyAPIManager()) {
         restApiService.postOperation(Constant.RESTAPI.Prefix + "/login", bodyParam: login_params) { json_response in
             let user = User()
-            if let _ = json_response["header"] as? String {
+            let prefs = NSUserDefaults.standardUserDefaults()
+            if let _ = json_response["header"] as? NSDictionary {
                 if let _ = json_response["signature"] as? String {
                     if let payload = json_response["payload"] as? NSDictionary {
                         user.jwt = json_response
@@ -76,13 +84,25 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                                 user.nickname = val as! NSString
                             }
                         }
-                        let prefs = NSUserDefaults.standardUserDefaults()
                         prefs.setObject(user.nickname, forKey: "NICKNAME")
                         prefs.setObject(user.jwt, forKey: "JWT")
                         prefs.setInteger(1, forKey: "ISLOGGEDIN")
                         prefs.synchronize()
+                        dispatch_async(dispatch_get_main_queue(),{
+                            self.performSegueWithIdentifier("signin", sender: self)
+                        })
+                        
                     }
                 }
+            } else {
+                if let data = json_response["message"]{
+                    dispatch_async(dispatch_get_main_queue(),{
+                        let alert = UIAlertController(title: "Error while login!", message: (data as! String), preferredStyle: .Alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: .Default) { _ in })
+                        self.presentViewController(alert, animated: true){}
+                    })
+                }
+                
             }
         }
     }

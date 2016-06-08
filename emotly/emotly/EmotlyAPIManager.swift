@@ -38,7 +38,7 @@ class EmotlyAPIManager: NSObject, EmotlyAPIManagerAbstract {
     }
     
     func makeHTTPGetRequest(path: String, onCompletion: ServiceResponse) {
-        let request: NSMutableURLRequest = NSMutableURLRequest(URL: NSURL(string: path)!)
+        let request = NSMutableURLRequest(URL: NSURL(string: path)!)
         let session = NSURLSession.sharedSession()
         
         let task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in
@@ -55,11 +55,18 @@ class EmotlyAPIManager: NSObject, EmotlyAPIManagerAbstract {
     }
     
     func makeHTTPpostRequest(path: String, bodyParam: NSDictionary, onCompletion: ServiceResponse) {
-        let request: NSMutableURLRequest = NSMutableURLRequest(URL: NSURL(string: path)!)
+        let request = NSMutableURLRequest(URL: NSURL(string: path)!)
         let session = NSURLSession.sharedSession()
         request.HTTPMethod = "POST"
-        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "content-Type")
+        
+        let prefs = NSUserDefaults.standardUserDefaults()
+        if let token = prefs.objectForKey("JWT") {
+            let header_auth_token = try! NSJSONSerialization.dataWithJSONObject(token, options: [])
+            let datastring = NSString(data:header_auth_token, encoding:NSUTF8StringEncoding) as! String
+            request.addValue(datastring, forHTTPHeaderField: "x-emotly-auth-token")
+        }
 
+        request.setValue("application/json; charset=utf-8", forHTTPHeaderField: "content-Type")
         request.HTTPBody = try! NSJSONSerialization.dataWithJSONObject(bodyParam, options: [])
         
         let task = session.dataTaskWithRequest(request, completionHandler: {data, response, error -> Void in

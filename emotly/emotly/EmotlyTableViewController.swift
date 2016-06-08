@@ -25,20 +25,63 @@ class EmotlyTableViewController: UITableViewController {
     // MARK: Property
     @IBOutlet weak var moodLabel: UILabel!
     var emotlies = [Emotly]()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         getEmotlies(endPoint())
     }
+
+    override func viewDidAppear(animated: Bool) {
+        self.tableView.reloadData()
+    }
+
+//    override func viewWillAppear(animated: Bool) {
+//        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+//        var initialViewController: UIViewController
+//        initialViewController = mainStoryboard.instantiateViewControllerWithIdentifier("LoginViewController") as!
+//        LoginViewController
+//        let nav = UINavigationController(rootViewController: initialViewController)
+//        self.presentViewController(nav, animated: true, completion: nil)
+//    }
     
-    func endPoint()-> EmotlyAPIManagerAbstract {
-        if ((NSProcessInfo.processInfo().environment["UI_TESTING_MODE"]) == "true") {
-            return EmotlyAPIManagerTest()
-        }else{
-            return EmotlyAPIManager()
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+
+    // MARK: - Table view data source
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return emotlies.count
+    }
+
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> EmotlyTableViewCell {
+        let cellIdentifier = "emotlyTableViewCell"
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! EmotlyTableViewCell
+        
+        // Fetches the appropriate emotly for the data source layout.
+        let emotly = emotlies[indexPath.row]
+        
+        cell.nicknameLabel?.text = emotly.user.nickname as String
+        cell.moodLabel?.text = emotly.mood.value as String
+        cell.created_atLabel?.text = emotly.created_at.relativeTime as String
+        return cell
+    }
+
+    // Function used to unwind the emotly list from the NewEmotlyViewController when a mood is selected
+    @IBAction func unwindToEmotlyList(sender: UIStoryboardSegue) {
+        if let sourceViewController = sender.sourceViewController as? NewEmotlyViewController {
+            let emotly = sourceViewController.emotly
+            // Add a new emotly.
+            let newIndexPath = NSIndexPath(forRow: emotlies.count, inSection: 0)
+            emotlies.insert(emotly, atIndex: 0)
+            tableView.insertRowsAtIndexPaths([newIndexPath], withRowAnimation: .Top)
         }
     }
-    
+
     // Function used to fetch the list of emotlies from the rest api service.
     func getEmotlies(restApiService: EmotlyAPIManagerAbstract = EmotlyAPIManager()) {
         restApiService.getOperation(Constant.RESTAPI.Prefix + "/emotlies") { json in
@@ -67,81 +110,7 @@ class EmotlyTableViewController: UITableViewController {
             dispatch_async(dispatch_get_main_queue(),{
                 self.emotlies.sortInPlace({ $0.created_at.compare($1.created_at) == NSComparisonResult.OrderedDescending })
                 self.tableView.reloadData()
-                
             })
         }
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
-    // MARK: - Table view data source
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return emotlies.count
-    }
-    
-    
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> EmotlyTableViewCell {
-        let cellIdentifier = "emotlyTableViewCell"
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! EmotlyTableViewCell
-        
-        // Fetches the appropriate emotly for the data source layout.
-        let emotly = emotlies[indexPath.row]
-        
-        cell.nicknameLabel?.text = emotly.user.nickname as String
-        cell.moodLabel?.text = emotly.mood.value as String
-        cell.created_atLabel?.text = emotly.created_at.relativeTime as String
-        return cell
-    }
-    
-    /*
-     // Override to support conditional editing of the table view.
-     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
-    
-    /*
-     // Override to support editing the table view.
-     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-     if editingStyle == .Delete {
-     // Delete the row from the data source
-     tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-     } else if editingStyle == .Insert {
-     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-     }
-     }
-     */
-    
-    /*
-     // Override to support rearranging the table view.
-     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-     
-     }
-     */
-    
-    /*
-     // Override to support conditional rearranging of the table view.
-     override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-     // Return false if you do not want the item to be re-orderable.
-     return true
-     }
-     */
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }

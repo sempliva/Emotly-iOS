@@ -25,21 +25,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        //SET INITIAL CONTROLLER
+
+        if ((NSProcessInfo.processInfo().environment["UI_TESTING_MODE"]) == "true" ){
+            let prefs = NSUserDefaults.standardUserDefaults()
+            let jwt: NSDictionary = [
+                "header": ["algo": "sha256", "type": "jwt"],
+                "payload": ["expire": "ghi", "nickname": "test"],
+                "signature": "dbrGyPEVZaPKy"
+            ]
+            prefs.setObject("test", forKey: "NICKNAME")
+            prefs.setObject(jwt, forKey: "JWT")
+            prefs.setInteger(1, forKey: "ISLOGGEDIN")
+            prefs.synchronize()
+        }
+        else if ((NSProcessInfo.processInfo().environment["UI_LOGIN_TESTING_MODE"]) == "true" ){
+            let appDomain = NSBundle.mainBundle().bundleIdentifier!
+            NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain)
+        }
+
+        // SET INITIAL CONTROLLER
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         var initialViewController: UIViewController
         let prefs = NSUserDefaults.standardUserDefaults()
         let login = prefs.integerForKey("ISLOGGEDIN") as Int
         if login == 1 {
-            // if already logged in then redirect to EmotlyTableViewController
+            // If already logged in then redirect to EmotlyTableViewController.
             initialViewController = mainStoryboard.instantiateViewControllerWithIdentifier("EmotlyTableViewController") as! EmotlyTableViewController
         } else {
-            //If not logged in then show LoginViewController
+            // If not logged in then show LoginViewController.
             initialViewController = mainStoryboard.instantiateViewControllerWithIdentifier("LoginViewController") as!
             LoginViewController
         }
-        self.window?.rootViewController = initialViewController
+        // Set the correct navigation controlloer scene as initial controller.
+        let nav = UINavigationController(rootViewController: initialViewController)
+        self.window?.rootViewController = nav
         self.window?.makeKeyAndVisible()
         
         // Override point for customization after application launch.

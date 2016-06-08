@@ -26,9 +26,6 @@ class EmotlyTableViewControllerTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        let prefs = NSUserDefaults.standardUserDefaults()
-        prefs.setInteger(1, forKey: "ISLOGGEDIN")
-        prefs.synchronize()
         let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
         viewController = storyboard.instantiateViewControllerWithIdentifier("EmotlyTableViewController") as! EmotlyTableViewController
     }
@@ -54,7 +51,7 @@ class EmotlyTableViewControllerTests: XCTestCase {
         // Test that our injected result was assigned
         // to the emotlies array
         XCTAssertEqual((viewController as! EmotlyTableViewController).emotlies.count, 2)
-        
+        print((viewController as! EmotlyTableViewController).emotlies.count)
         XCTAssertGreaterThan( (viewController as! EmotlyTableViewController).emotlies[1].created_at.timeIntervalSinceReferenceDate,
                               (viewController as! EmotlyTableViewController).emotlies[0].created_at.timeIntervalSinceReferenceDate)
     }

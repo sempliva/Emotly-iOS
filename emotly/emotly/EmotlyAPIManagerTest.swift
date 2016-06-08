@@ -40,8 +40,8 @@ class EmotlyAPIManagerTest: EmotlyAPIManagerAbstract {
     
     func getOperation(path: String, onCompletion: (NSDictionary) -> Void) {
         getOperationWasCalled = true
-        let route = Constant.RESTAPI.BaseURL + path
-        makeHTTPGetRequest(route, onCompletion: { json, err in
+        //l et route = Constant.RESTAPI.BaseURL + path
+        makeHTTPGetRequest(path, onCompletion: { json, err in
             onCompletion(json as NSDictionary)
         })
     }
@@ -54,9 +54,16 @@ class EmotlyAPIManagerTest: EmotlyAPIManagerAbstract {
     }
     
     func makeHTTPGetRequest(path: String, onCompletion: ServiceResponse) {
-        let jsonData = "{\"emotlies\": [{\"created_at\": \"2016-05-18T17:06:02Z\",\"mood\": \"buh\",\"nickname\": \"testgetown\"},{\"created_at\": \"2016-05-19T17:06:02Z\",\"mood\": \"happy\",\"nickname\": \"testgetown2\"}]}"
-        let result =  convertStringToDictionary(jsonData)!
-        onCompletion(result, nil)
+        if (path == Constant.RESTAPI.Prefix + "/moods") {
+            let jsonData = "{\"moods\": [{\"id\": 1,\"value\": \"happy\"},{\"id\": 2,\"value\": \"sad\"}]}"
+            let result =  convertStringToDictionary(jsonData)!
+            onCompletion(result, nil)
+        }
+        if (path == Constant.RESTAPI.Prefix + "/emotlies") {
+            let jsonData = "{\"emotlies\": [{\"created_at\": \"2016-05-18T17:06:02Z\",\"mood\": \"buh\",\"nickname\": \"testgetown\"},{\"created_at\": \"2016-05-19T17:06:02Z\",\"mood\": \"happy\",\"nickname\": \"testgetown2\"}]}"
+            let result =  convertStringToDictionary(jsonData)!
+            onCompletion(result, nil)
+        }
     }
     
     func makeHTTPpostRequest(path: String, bodyParam: NSDictionary, onCompletion: ServiceResponse) {
@@ -76,6 +83,11 @@ class EmotlyAPIManagerTest: EmotlyAPIManagerAbstract {
             prefs.synchronize()
         }
 
+        if (path == Constant.RESTAPI.Prefix + "/emotlies/new") {
+            let jsonData = "{\"emotly\": {\"created_at\": \"2016-05-18T17:06:02Z\",\"mood\": \"happy\", \"nickname\": \"testgetown\"}}"
+            let result =  convertStringToDictionary(jsonData)!
+            onCompletion(result, nil)
+        }
     }
     
 }
