@@ -1,0 +1,18 @@
+#
+# Please don't change this file unless you know what you are doing.
+#
+
+language: objective-c
+osx_image: xcode7.3
+#xcode_project: emotly/emotly.xcodeproj
+#xcode_scheme: emotly
+
+# We're using the 'script' section here to drive the tests instead of
+# xcode_project/xcode_scheme provided by Travis. This is because we
+# can better address non-trivial scenarios.
+script:
+#  xctool -project emotly/emotly.xcodeproj -scheme emotly -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6 Plus' build test ONLY_ACTIVE_ARCH=NO CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
+  - set -o pipefail && xcodebuild clean -project emotly/emotly.xcodeproj -scheme emotly -destination 'platform=iOS Simulator,name=iPhone 6s Plus'  | xcpretty
+  - set -o pipefail && xcodebuild build -project emotly/emotly.xcodeproj -scheme emotly -destination 'platform=iOS Simulator,name=iPhone 6s Plus' | xcpretty
+  - set -o pipefail && xcodebuild test -project emotly/emotly.xcodeproj -scheme emotly -destination 'platform=iOS Simulator,name=iPhone 6s Plus' | xcpretty
+
