@@ -18,30 +18,20 @@
  SOFTWARE.
  */
 
-import XCTest
-@testable import emotly
+import UIKit
 
-class emotlyUITests: XCTestCase {
-    let app = XCUIApplication()
-
-    override func setUp() {
-        super.setUp()
-        continueAfterFailure = false
-        app.launchEnvironment = ["UI_TESTING_MODE": "true"]
-        app.launch()
-    }
+// Custom cell for Emotly Table View Controller.
+class EmotlyTableViewCell: UITableViewCell {
+    // MARK: Properties
+    @IBOutlet weak var nicknameLabel: UILabel!
+    @IBOutlet weak var moodLabel: UILabel!
+    @IBOutlet weak var created_atLabel: UILabel!
     
-    override func tearDown() {
-        super.tearDown()
+    override func awakeFromNib() {
+        super.awakeFromNib()
     }
-    
-    func testExample() {
-        XCTAssertEqual(app.tables.count, 1)
-        let table = app.tables.elementBoundByIndex(0)
-        XCTAssertEqual(table.cells.count, 2, "found instead: \(table.cells.debugDescription)")
 
-        table.cells.staticTexts["buh"].tap()
-        table.cells.elementBoundByIndex(0).staticTexts["feels"].tap()
-        table.cells.staticTexts["testgetown"].tap()
+    override func setSelected(selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
     }
 }

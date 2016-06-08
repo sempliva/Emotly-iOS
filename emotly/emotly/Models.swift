@@ -18,30 +18,63 @@
  SOFTWARE.
  */
 
-import XCTest
-@testable import emotly
+import Foundation
 
-class emotlyUITests: XCTestCase {
-    let app = XCUIApplication()
+/*
+ * A Mood.
+ */
+class Mood: NSObject {
+    // MARK: Properties
+    var id: NSNumber
+    var value: NSString
 
-    override func setUp() {
-        super.setUp()
-        continueAfterFailure = false
-        app.launchEnvironment = ["UI_TESTING_MODE": "true"]
-        app.launch()
+    // MARK: Inizialization
+    override init() {
+        self.id = 0
+        self.value = ""
     }
-    
-    override func tearDown() {
-        super.tearDown()
+    init(id: NSNumber,value: NSString) {
+        self.id = id
+        self.value = value
     }
-    
-    func testExample() {
-        XCTAssertEqual(app.tables.count, 1)
-        let table = app.tables.elementBoundByIndex(0)
-        XCTAssertEqual(table.cells.count, 2, "found instead: \(table.cells.debugDescription)")
+}
 
-        table.cells.staticTexts["buh"].tap()
-        table.cells.elementBoundByIndex(0).staticTexts["feels"].tap()
-        table.cells.staticTexts["testgetown"].tap()
+/*
+ * An Emotly, pure and simple.
+ */
+
+class Emotly: NSObject {
+    // MARK: Properties
+    var mood: Mood
+    var user: User
+    var created_at: NSDate
+
+    // MARK: Inizialization
+    override init() {
+        self.mood = Mood()
+        self.user = User()
+        self.created_at = NSDate()
+    }
+    init(mood: Mood, user: User, created_at: NSDate) {
+        self.mood = mood
+        self.user = user
+        self.created_at = created_at
+    }
+}
+
+/*
+ * User.
+ */
+
+class User: NSObject {
+    // MARK: Properties
+    var nickname: NSString
+
+    // MARK: Inizialization
+    override init() {
+        self.nickname = ""
+    }
+    init(nickname: NSString) {
+        self.nickname = nickname
     }
 }

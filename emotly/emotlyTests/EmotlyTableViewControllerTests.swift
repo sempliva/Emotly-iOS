@@ -21,27 +21,37 @@
 import XCTest
 @testable import emotly
 
-class emotlyUITests: XCTestCase {
-    let app = XCUIApplication()
-
+class EmotlyTableViewControllerTests: XCTestCase {
+    var viewController: EmotlyTableViewController!
+    
     override func setUp() {
         super.setUp()
-        continueAfterFailure = false
-        app.launchEnvironment = ["UI_TESTING_MODE": "true"]
-        app.launch()
+        let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+        viewController = storyboard.instantiateInitialViewController() as! EmotlyTableViewController
     }
     
     override func tearDown() {
         super.tearDown()
     }
     
-    func testExample() {
-        XCTAssertEqual(app.tables.count, 1)
-        let table = app.tables.elementBoundByIndex(0)
-        XCTAssertEqual(table.cells.count, 2, "found instead: \(table.cells.debugDescription)")
-
-        table.cells.staticTexts["buh"].tap()
-        table.cells.elementBoundByIndex(0).staticTexts["feels"].tap()
-        table.cells.staticTexts["testgetown"].tap()
+    func testViewController() {
+        // Test and Load the View at the Same Time!
+        XCTAssertNotNil(viewController.view)
+    }
+    
+    func test_fetchEmotlies() {
+        let emotlyAPIManagerTest = EmotlyAPIManagerTest()
+        
+        viewController.getEmotlies(emotlyAPIManagerTest)
+        
+        // Test that the RestApiManager was actually called
+        XCTAssertTrue(emotlyAPIManagerTest.getOperationWasCalled)
+        
+        // Test that our injected result was assigned
+        // to the emotlies array
+        XCTAssertEqual(viewController.emotlies.count, 2)
+        
+        XCTAssertGreaterThan( viewController.emotlies[1].created_at.timeIntervalSinceReferenceDate,
+                              viewController.emotlies[0].created_at.timeIntervalSinceReferenceDate)
     }
 }
