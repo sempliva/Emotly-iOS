@@ -7,21 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		682936A01D077B58002A3A6C /* NewEmotlyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6829369F1D077B58002A3A6C /* NewEmotlyTests.swift */; };
+		682936A21D077BCA002A3A6C /* NewEmotlyViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682936A11D077BCA002A3A6C /* NewEmotlyViewControllerTests.swift */; };
 		685FECE11CF5165A0003C172 /* EmotlyAPIManagerAbstract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685FECE01CF5165A0003C172 /* EmotlyAPIManagerAbstract.swift */; };
 		685FECE31CF517690003C172 /* EmotlyAPIManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685FECE21CF517690003C172 /* EmotlyAPIManagerTest.swift */; };
 		686A049C1CDAF2AA005CCCD0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686A049B1CDAF2AA005CCCD0 /* AppDelegate.swift */; };
-		686A049E1CDAF2AA005CCCD0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686A049D1CDAF2AA005CCCD0 /* ViewController.swift */; };
 		686A04A11CDAF2AA005CCCD0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 686A049F1CDAF2AA005CCCD0 /* Main.storyboard */; };
 		686A04A31CDAF2AA005CCCD0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 686A04A21CDAF2AA005CCCD0 /* Assets.xcassets */; };
 		686A04A61CDAF2AA005CCCD0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 686A04A41CDAF2AA005CCCD0 /* LaunchScreen.storyboard */; };
-		686A04BC1CDAF2AA005CCCD0 /* emotlyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686A04BB1CDAF2AA005CCCD0 /* emotlyUITests.swift */; };
+		686A04BC1CDAF2AA005CCCD0 /* LoginTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686A04BB1CDAF2AA005CCCD0 /* LoginTests.swift */; };
 		6882F7491CEE5906004665A4 /* modelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6882F7481CEE5906004665A4 /* modelTests.swift */; };
+		688EC4C61CF52D4B0081BC9F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688EC4C51CF52D4B0081BC9F /* LoginViewController.swift */; };
 		689604621CED3738003DCF0A /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689604611CED3738003DCF0A /* Models.swift */; };
 		689604641CED38DE003DCF0A /* EmotlyAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689604631CED38DE003DCF0A /* EmotlyAPIManager.swift */; };
 		689604661CED53AD003DCF0A /* EmotlyTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689604651CED53AD003DCF0A /* EmotlyTableViewController.swift */; };
 		689B23141CEE30A100CC243E /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689B23131CEE30A100CC243E /* Constant.swift */; };
 		68BBA7741CF38CCB00574D1F /* EmotlyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BBA7731CF38CCB00574D1F /* EmotlyTableViewCell.swift */; };
 		68BBA7761CF3B4D900574D1F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BBA7751CF3B4D900574D1F /* Utils.swift */; };
+		68BEF38A1CF8F9B10083621A /* NewEmotlyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68BEF3891CF8F9B10083621A /* NewEmotlyViewController.swift */; };
+		68CFFA541CF7D1520011D922 /* LoginViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CFFA531CF7D1520011D922 /* LoginViewControllerTests.swift */; };
+		68D497351CFFBA2300BC1704 /* EmotlyListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D497341CFFBA2300BC1704 /* EmotlyListTests.swift */; };
 		68D69F4B1CEEAF8E00F373DB /* EmotlyTableViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68D69F4A1CEEAF8E00F373DB /* EmotlyTableViewControllerTests.swift */; };
 /* End PBXBuildFile section */
 
@@ -43,11 +48,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		6829369F1D077B58002A3A6C /* NewEmotlyTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewEmotlyTests.swift; sourceTree = "<group>"; };
+		682936A11D077BCA002A3A6C /* NewEmotlyViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewEmotlyViewControllerTests.swift; sourceTree = "<group>"; };
 		685FECE01CF5165A0003C172 /* EmotlyAPIManagerAbstract.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmotlyAPIManagerAbstract.swift; sourceTree = "<group>"; };
 		685FECE21CF517690003C172 /* EmotlyAPIManagerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmotlyAPIManagerTest.swift; sourceTree = "<group>"; };
 		686A04981CDAF2AA005CCCD0 /* emotly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = emotly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		686A049B1CDAF2AA005CCCD0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		686A049D1CDAF2AA005CCCD0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		686A04A01CDAF2AA005CCCD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		686A04A21CDAF2AA005CCCD0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		686A04A51CDAF2AA005CCCD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -55,15 +61,19 @@
 		686A04AC1CDAF2AA005CCCD0 /* emotlyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = emotlyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		686A04B21CDAF2AA005CCCD0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		686A04B71CDAF2AA005CCCD0 /* emotlyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = emotlyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		686A04BB1CDAF2AA005CCCD0 /* emotlyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = emotlyUITests.swift; sourceTree = "<group>"; };
+		686A04BB1CDAF2AA005CCCD0 /* LoginTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTests.swift; sourceTree = "<group>"; };
 		686A04BD1CDAF2AA005CCCD0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6882F7481CEE5906004665A4 /* modelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = modelTests.swift; sourceTree = "<group>"; };
+		688EC4C51CF52D4B0081BC9F /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		689604611CED3738003DCF0A /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		689604631CED38DE003DCF0A /* EmotlyAPIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmotlyAPIManager.swift; sourceTree = "<group>"; };
 		689604651CED53AD003DCF0A /* EmotlyTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmotlyTableViewController.swift; sourceTree = "<group>"; };
 		689B23131CEE30A100CC243E /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		68BBA7731CF38CCB00574D1F /* EmotlyTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmotlyTableViewCell.swift; sourceTree = "<group>"; };
 		68BBA7751CF3B4D900574D1F /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		68BEF3891CF8F9B10083621A /* NewEmotlyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewEmotlyViewController.swift; sourceTree = "<group>"; };
+		68CFFA531CF7D1520011D922 /* LoginViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewControllerTests.swift; sourceTree = "<group>"; };
+		68D497341CFFBA2300BC1704 /* EmotlyListTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmotlyListTests.swift; sourceTree = "<group>"; };
 		68D69F4A1CEEAF8E00F373DB /* EmotlyTableViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmotlyTableViewControllerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -95,7 +105,8 @@
 		685FECE61CF526C20003C172 /* controllers */ = {
 			isa = PBXGroup;
 			children = (
-				686A049D1CDAF2AA005CCCD0 /* ViewController.swift */,
+				68BEF3891CF8F9B10083621A /* NewEmotlyViewController.swift */,
+				688EC4C51CF52D4B0081BC9F /* LoginViewController.swift */,
 				68BBA7731CF38CCB00574D1F /* EmotlyTableViewCell.swift */,
 				689604651CED53AD003DCF0A /* EmotlyTableViewController.swift */,
 			);
@@ -161,6 +172,8 @@
 		686A04AF1CDAF2AA005CCCD0 /* emotlyTests */ = {
 			isa = PBXGroup;
 			children = (
+				682936A11D077BCA002A3A6C /* NewEmotlyViewControllerTests.swift */,
+				68CFFA531CF7D1520011D922 /* LoginViewControllerTests.swift */,
 				68D69F4A1CEEAF8E00F373DB /* EmotlyTableViewControllerTests.swift */,
 				6882F7481CEE5906004665A4 /* modelTests.swift */,
 				686A04B21CDAF2AA005CCCD0 /* Info.plist */,
@@ -171,7 +184,9 @@
 		686A04BA1CDAF2AA005CCCD0 /* emotlyUITests */ = {
 			isa = PBXGroup;
 			children = (
-				686A04BB1CDAF2AA005CCCD0 /* emotlyUITests.swift */,
+				6829369F1D077B58002A3A6C /* NewEmotlyTests.swift */,
+				68D497341CFFBA2300BC1704 /* EmotlyListTests.swift */,
+				686A04BB1CDAF2AA005CCCD0 /* LoginTests.swift */,
 				686A04BD1CDAF2AA005CCCD0 /* Info.plist */,
 			);
 			path = emotlyUITests;
@@ -311,12 +326,13 @@
 				689604621CED3738003DCF0A /* Models.swift in Sources */,
 				689604661CED53AD003DCF0A /* EmotlyTableViewController.swift in Sources */,
 				685FECE11CF5165A0003C172 /* EmotlyAPIManagerAbstract.swift in Sources */,
-				686A049E1CDAF2AA005CCCD0 /* ViewController.swift in Sources */,
 				685FECE31CF517690003C172 /* EmotlyAPIManagerTest.swift in Sources */,
 				68BBA7741CF38CCB00574D1F /* EmotlyTableViewCell.swift in Sources */,
+				68BEF38A1CF8F9B10083621A /* NewEmotlyViewController.swift in Sources */,
 				689604641CED38DE003DCF0A /* EmotlyAPIManager.swift in Sources */,
 				686A049C1CDAF2AA005CCCD0 /* AppDelegate.swift in Sources */,
 				689B23141CEE30A100CC243E /* Constant.swift in Sources */,
+				688EC4C61CF52D4B0081BC9F /* LoginViewController.swift in Sources */,
 				68BBA7761CF3B4D900574D1F /* Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -325,8 +341,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68CFFA541CF7D1520011D922 /* LoginViewControllerTests.swift in Sources */,
 				68D69F4B1CEEAF8E00F373DB /* EmotlyTableViewControllerTests.swift in Sources */,
 				6882F7491CEE5906004665A4 /* modelTests.swift in Sources */,
+				682936A21D077BCA002A3A6C /* NewEmotlyViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,7 +352,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				686A04BC1CDAF2AA005CCCD0 /* emotlyUITests.swift in Sources */,
+				686A04BC1CDAF2AA005CCCD0 /* LoginTests.swift in Sources */,
+				68D497351CFFBA2300BC1704 /* EmotlyListTests.swift in Sources */,
+				682936A01D077B58002A3A6C /* NewEmotlyTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

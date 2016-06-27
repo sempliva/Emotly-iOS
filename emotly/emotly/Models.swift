@@ -69,12 +69,15 @@ class Emotly: NSObject {
 class User: NSObject {
     // MARK: Properties
     var nickname: NSString
+    var jwt: NSDictionary
 
     // MARK: Inizialization
     override init() {
         self.nickname = ""
+        self.jwt = NSDictionary()
     }
-    init(nickname: NSString) {
+    init(nickname: NSString, jwt: NSDictionary) {
         self.nickname = nickname
+        self.jwt = jwt
     }
 }

@@ -21,13 +21,13 @@
 import XCTest
 @testable import emotly
 
-class EmotlyTableViewControllerTests: XCTestCase {
+class LoginViewControllerTests: XCTestCase {
     var viewController: UIViewController!
     
     override func setUp() {
         super.setUp()
         let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-        viewController = storyboard.instantiateViewControllerWithIdentifier("EmotlyTableViewController") as! EmotlyTableViewController
+        viewController = storyboard.instantiateViewControllerWithIdentifier("LoginViewController") as! LoginViewController
     }
     
     
@@ -38,21 +38,25 @@ class EmotlyTableViewControllerTests: XCTestCase {
     func testViewController() {
         // Test and Load the View at the Same Time!
         XCTAssertNotNil(viewController.view)
+        XCTAssertEqual((viewController as! LoginViewController).buttonSignIn.enabled, false)
     }
-    
-    func test_fetchEmotlies() {
+
+    func testLogin() {
         let emotlyAPIManagerTest = EmotlyAPIManagerTest()
+        let login_params : NSDictionary = ["user_id": "test", "password": "password"]
         
-        (viewController as! EmotlyTableViewController).getEmotlies(emotlyAPIManagerTest)
+        (viewController as! LoginViewController).login(login_params, restApiService: emotlyAPIManagerTest)
         
         // Test that the RestApiManager was actually called
-        XCTAssertTrue(emotlyAPIManagerTest.getOperationWasCalled)
+        XCTAssertTrue(emotlyAPIManagerTest.postOperationWasCalled)
         
-        // Test that our injected result was assigned
-        // to the emotlies array
-        XCTAssertEqual((viewController as! EmotlyTableViewController).emotlies.count, 2)
-        print((viewController as! EmotlyTableViewController).emotlies.count)
-        XCTAssertGreaterThan( (viewController as! EmotlyTableViewController).emotlies[1].created_at.timeIntervalSinceReferenceDate,
-                              (viewController as! EmotlyTableViewController).emotlies[0].created_at.timeIntervalSinceReferenceDate)
+        let prefs = NSUserDefaults.standardUserDefaults()
+        let login = prefs.integerForKey("ISLOGGEDIN") as Int
+        let nickname = prefs.objectForKey("NICKNAME") as! String
+        let jwt = prefs.objectForKey("JWT") as! NSDictionary
+        
+        XCTAssertEqual(jwt.allKeys.count, 3)
+        XCTAssertEqual(nickname, "test")
+        XCTAssertEqual(login, 1)
     }
 }

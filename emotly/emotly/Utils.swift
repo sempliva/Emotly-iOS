@@ -20,6 +20,30 @@
 
 import Foundation
 
+func endPoint()-> EmotlyAPIManagerAbstract {
+    let pInfo = NSProcessInfo.processInfo()
+    if pInfo.environment["UI_TESTING_MODE"] == "true" {
+        return EmotlyAPIManagerTest()
+    }
+    if pInfo.environment["UI_LOGIN_TESTING_MODE"] == "true" {
+        return EmotlyAPIManagerTest()
+    }
+    return EmotlyAPIManager()
+}
+
+func trimWhiteSpaceInTextField(inputString : String) -> String{
+    let trimmedString = inputString.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+    return trimmedString
+}
+
+func checkMaxLength(textField: String, minLength: Int, maxLength: Int?) -> Bool {
+    let count = textField.characters.count
+    if (count < minLength || (maxLength != nil && count > maxLength)) {
+        return false
+    }
+    return true;
+}
+
 // Extension to NSDate class. Used to create relative date.
 extension NSDate {
     func yearsFrom(date: NSDate) -> Int {
@@ -59,7 +83,7 @@ extension NSDate {
             return now.monthsFrom(self).description + " month" + { return now.monthsFrom(self) > 1 ? "s" : "" }() + " ago"
         }
         if (now.weeksFrom(self) > 0) {
-            return now.weeksFrom(self).description + " week" + { return now.weeksFrom(self) > 1 ? "s" : "" }() + "ago"
+            return now.weeksFrom(self).description + " week" + { return now.weeksFrom(self) > 1 ? "s" : "" }() + " ago"
         }
         if (now.daysFrom(self) > 0) {
             if now.daysFrom(self) == 1 { return "Yesterday" }

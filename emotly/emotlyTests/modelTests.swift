@@ -22,7 +22,7 @@ import XCTest
 @testable import emotly
 
 class modelTests: XCTestCase {
-    
+  
     override func setUp() {
         super.setUp()
     }
@@ -51,10 +51,17 @@ class modelTests: XCTestCase {
         let potentialUser = User()
         XCTAssertNotNil(potentialUser)
         XCTAssertEqual(potentialUser.nickname, "")
+        XCTAssertEqual(potentialUser.jwt, NSDictionary())
         
-        let potentialUser2 = User(nickname: "testnick")
+        let jwt: NSDictionary = [
+            "header": ["algo": "sha256", "type": "jwt"],
+            "payload": ["expire": "ghi", "nickname": "testnick"],
+            "signature": "dbrGyPEVZaPKy"
+        ]
+        let potentialUser2 = User(nickname: "testnick", jwt: jwt)
         XCTAssertNotNil(potentialUser2)
         XCTAssertEqual(potentialUser2.nickname, "testnick")
+        XCTAssertEqual(potentialUser2.jwt.allKeys.count, 3)
     }
     
     // Tests to confirm that the Mood initializer returns when no id or a value is provided.
@@ -64,15 +71,22 @@ class modelTests: XCTestCase {
         XCTAssertNotNil(potentialEmotly)
         XCTAssertEqual(potentialEmotly.mood.id, 0)
         XCTAssertEqual(potentialEmotly.user.nickname, "")
+        XCTAssertEqual(potentialEmotly.user.jwt, NSDictionary())
         
+        let jwt: NSDictionary = [
+            "header": ["algo": "sha256", "type": "jwt"],
+            "payload": ["expire": "ghi", "nickname": "testnick"],
+            "signature": "dbrGyPEVZaPKy"
+        ]
         let now = NSDate()
-        let user = User(nickname: "testuser")
+        let user = User(nickname: "testuser", jwt: jwt)
         let mood = Mood(id: 2, value: "happy")
         let potentialEmotly2 = Emotly(mood: mood, user: user, created_at: now)
         XCTAssertNotNil(potentialEmotly2)
         XCTAssertEqual(potentialEmotly2.mood.id, 2)
         XCTAssertEqual(potentialEmotly2.user.nickname, "testuser")
         XCTAssertEqual(potentialEmotly2.created_at, now)
+        XCTAssertEqual(potentialEmotly2.user.jwt.allKeys.count, 3)
     }
 
     func testPerformanceExample() {

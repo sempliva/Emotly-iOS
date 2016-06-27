@@ -22,7 +22,7 @@ import Foundation
 
 struct Constant {
     struct RESTAPI {
-        static let BaseURL = "https://emotly.herokuapp.com/"
+        static let BaseURL = "https://emotly-dev.herokuapp.com"
         static let Prefix = "/api/1.0"
     }
 }
