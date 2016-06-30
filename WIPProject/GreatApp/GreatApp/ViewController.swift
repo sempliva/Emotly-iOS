@@ -19,8 +19,21 @@ class ViewController: UIViewController {
                 self.screen.text = String(emotlies)
             })
         }
-        
-        // TODO: Report the eventual error here.
+        if err != nil {
+            // This has to happen on the main (UI) thread.
+            dispatch_async(dispatch_get_main_queue(), {
+                self.screen.text = String(err)
+            })
+        }
+    }
+    
+    private func loginScreen(logged: Bool, err: NSError?) {
+        if err != nil {
+            // This has to happen on the main (UI) thread.
+            dispatch_async(dispatch_get_main_queue(), {
+                self.screen.text = String(err)
+            })
+        }
     }
 
     override func viewDidLoad() {
@@ -28,7 +41,8 @@ class ViewController: UIViewController {
 
         screen.text = "Waiting..."
         emtlService.updateEmotlies(updateScreenWithEmotlies)
-        emtlService.login("michelangelo", password: "michelangelo")
+        emtlService.login("michelangelo", password: "michelangelo", doneCallback: loginScreen)
+        
     }
 
     override func didReceiveMemoryWarning() {

@@ -135,8 +135,14 @@ class EmotlyService {
         let endpoint = EmotlyService.emotlyURL + "/login"
         let req = Alamofire.request(.POST, endpoint, parameters: credentials, encoding: .JSON)
         req.validate().response { request, response, data, error in
+            guard  error == nil else {
+                doneCallback(false, error)
+                return
+            }
+
             guard let dat = data else {
-                return // TODO: Deal with the error here.
+                doneCallback(false, error)
+                return
             }
 
             let json_response = JSON(data: dat)
@@ -159,8 +165,13 @@ class EmotlyService {
         let endpoint = EmotlyService.emotlyURL + "/emotlies"
         let req = Alamofire.request(.GET, endpoint)
         req.validate().response { request, response, data, error in
+            guard  error == nil else {
+                doneCallback(nil, error)
+                return
+            }
+
             guard let dat = data else {
-                // TODO: deal with the error here. Returning (nil, error) should be ok.
+                doneCallback(nil, error)
                 return
             }
             
