@@ -11,18 +11,23 @@ import UIKit
 class ViewController: UIViewController {
     private let emtlService = EmotlyService()
     @IBOutlet weak var screen: UITextView!
+    
+    private func updateScreenWithEmotlies(emtl: Emotlies?, err: NSError?) {
+        if let emotlies = emtl {
+            // This has to happen on the main (UI) thread.
+            dispatch_async(dispatch_get_main_queue(), {
+                self.screen.text = String(emotlies)
+            })
+        }
+        
+        // TODO: Report the eventual error here.
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
         screen.text = "Waiting..."
-        
-        emtlService.updateEmotlies { (emtl, err) in
-            if let emotlies = emtl {
-                self.screen.text = String(emotlies)
-            }
-        }
-        
+        emtlService.updateEmotlies(updateScreenWithEmotlies)
     }
 
     override func didReceiveMemoryWarning() {

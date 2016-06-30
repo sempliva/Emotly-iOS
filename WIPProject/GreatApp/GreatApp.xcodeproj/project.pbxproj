@@ -51,7 +51,7 @@
 		150EBAF51D1BA06C000CE7E6 /* GreatAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreatAppUITests.swift; sourceTree = "<group>"; };
 		150EBAF71D1BA06C000CE7E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		15D49D1C1D1BA59A00F1C782 /* EmotlyService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmotlyService.swift; sourceTree = "<group>"; };
-		15D49D1E1D1BA82700F1C782 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		15D49D1E1D1BA82700F1C782 /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		1E594DCF9835DD9E91AE79BB /* Pods-GreatApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GreatApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GreatApp/Pods-GreatApp.debug.xcconfig"; sourceTree = "<group>"; };
 		2AA1081533D7B358B7D57E3C /* Pods-GreatApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GreatApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-GreatApp/Pods-GreatApp.release.xcconfig"; sourceTree = "<group>"; };
 		7872FA6BB8DE5966E814F92B /* Pods_GreatApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GreatApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
