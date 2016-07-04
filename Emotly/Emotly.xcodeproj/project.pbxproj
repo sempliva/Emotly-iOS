@@ -1,0 +1,507 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		158FDB621D2AEDB800B17072 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158FDB611D2AEDB800B17072 /* AppDelegate.swift */; };
+		158FDB641D2AEDB800B17072 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158FDB631D2AEDB800B17072 /* ViewController.swift */; };
+		158FDB671D2AEDB800B17072 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 158FDB651D2AEDB800B17072 /* Main.storyboard */; };
+		158FDB691D2AEDB800B17072 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 158FDB681D2AEDB800B17072 /* Assets.xcassets */; };
+		158FDB6C1D2AEDB800B17072 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 158FDB6A1D2AEDB800B17072 /* LaunchScreen.storyboard */; };
+		158FDB771D2AEDB800B17072 /* EmotlyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158FDB761D2AEDB800B17072 /* EmotlyTests.swift */; };
+		158FDB821D2AEDB800B17072 /* EmotlyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158FDB811D2AEDB800B17072 /* EmotlyUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		158FDB731D2AEDB800B17072 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 158FDB561D2AEDB800B17072 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 158FDB5D1D2AEDB800B17072;
+			remoteInfo = Emotly;
+		};
+		158FDB7E1D2AEDB800B17072 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 158FDB561D2AEDB800B17072 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 158FDB5D1D2AEDB800B17072;
+			remoteInfo = Emotly;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		158FDB5E1D2AEDB800B17072 /* Emotly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Emotly.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		158FDB611D2AEDB800B17072 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		158FDB631D2AEDB800B17072 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		158FDB661D2AEDB800B17072 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		158FDB681D2AEDB800B17072 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		158FDB6B1D2AEDB800B17072 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		158FDB6D1D2AEDB800B17072 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		158FDB721D2AEDB800B17072 /* EmotlyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EmotlyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		158FDB761D2AEDB800B17072 /* EmotlyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotlyTests.swift; sourceTree = "<group>"; };
+		158FDB781D2AEDB800B17072 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		158FDB7D1D2AEDB800B17072 /* EmotlyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EmotlyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		158FDB811D2AEDB800B17072 /* EmotlyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotlyUITests.swift; sourceTree = "<group>"; };
+		158FDB831D2AEDB800B17072 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		158FDB5B1D2AEDB800B17072 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		158FDB6F1D2AEDB800B17072 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		158FDB7A1D2AEDB800B17072 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		158FDB551D2AEDB800B17072 = {
+			isa = PBXGroup;
+			children = (
+				158FDB601D2AEDB800B17072 /* Emotly */,
+				158FDB751D2AEDB800B17072 /* EmotlyTests */,
+				158FDB801D2AEDB800B17072 /* EmotlyUITests */,
+				158FDB5F1D2AEDB800B17072 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		158FDB5F1D2AEDB800B17072 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				158FDB5E1D2AEDB800B17072 /* Emotly.app */,
+				158FDB721D2AEDB800B17072 /* EmotlyTests.xctest */,
+				158FDB7D1D2AEDB800B17072 /* EmotlyUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		158FDB601D2AEDB800B17072 /* Emotly */ = {
+			isa = PBXGroup;
+			children = (
+				158FDB611D2AEDB800B17072 /* AppDelegate.swift */,
+				158FDB631D2AEDB800B17072 /* ViewController.swift */,
+				158FDB651D2AEDB800B17072 /* Main.storyboard */,
+				158FDB681D2AEDB800B17072 /* Assets.xcassets */,
+				158FDB6A1D2AEDB800B17072 /* LaunchScreen.storyboard */,
+				158FDB6D1D2AEDB800B17072 /* Info.plist */,
+			);
+			path = Emotly;
+			sourceTree = "<group>";
+		};
+		158FDB751D2AEDB800B17072 /* EmotlyTests */ = {
+			isa = PBXGroup;
+			children = (
+				158FDB761D2AEDB800B17072 /* EmotlyTests.swift */,
+				158FDB781D2AEDB800B17072 /* Info.plist */,
+			);
+			path = EmotlyTests;
+			sourceTree = "<group>";
+		};
+		158FDB801D2AEDB800B17072 /* EmotlyUITests */ = {
+			isa = PBXGroup;
+			children = (
+				158FDB811D2AEDB800B17072 /* EmotlyUITests.swift */,
+				158FDB831D2AEDB800B17072 /* Info.plist */,
+			);
+			path = EmotlyUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		158FDB5D1D2AEDB800B17072 /* Emotly */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 158FDB861D2AEDB800B17072 /* Build configuration list for PBXNativeTarget "Emotly" */;
+			buildPhases = (
+				158FDB5A1D2AEDB800B17072 /* Sources */,
+				158FDB5B1D2AEDB800B17072 /* Frameworks */,
+				158FDB5C1D2AEDB800B17072 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Emotly;
+			productName = Emotly;
+			productReference = 158FDB5E1D2AEDB800B17072 /* Emotly.app */;
+			productType = "com.apple.product-type.application";
+		};
+		158FDB711D2AEDB800B17072 /* EmotlyTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 158FDB891D2AEDB800B17072 /* Build configuration list for PBXNativeTarget "EmotlyTests" */;
+			buildPhases = (
+				158FDB6E1D2AEDB800B17072 /* Sources */,
+				158FDB6F1D2AEDB800B17072 /* Frameworks */,
+				158FDB701D2AEDB800B17072 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				158FDB741D2AEDB800B17072 /* PBXTargetDependency */,
+			);
+			name = EmotlyTests;
+			productName = EmotlyTests;
+			productReference = 158FDB721D2AEDB800B17072 /* EmotlyTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		158FDB7C1D2AEDB800B17072 /* EmotlyUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 158FDB8C1D2AEDB800B17072 /* Build configuration list for PBXNativeTarget "EmotlyUITests" */;
+			buildPhases = (
+				158FDB791D2AEDB800B17072 /* Sources */,
+				158FDB7A1D2AEDB800B17072 /* Frameworks */,
+				158FDB7B1D2AEDB800B17072 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				158FDB7F1D2AEDB800B17072 /* PBXTargetDependency */,
+			);
+			name = EmotlyUITests;
+			productName = EmotlyUITests;
+			productReference = 158FDB7D1D2AEDB800B17072 /* EmotlyUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		158FDB561D2AEDB800B17072 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Michelangelo De Simone";
+				TargetAttributes = {
+					158FDB5D1D2AEDB800B17072 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+					158FDB711D2AEDB800B17072 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 158FDB5D1D2AEDB800B17072;
+					};
+					158FDB7C1D2AEDB800B17072 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 158FDB5D1D2AEDB800B17072;
+					};
+				};
+			};
+			buildConfigurationList = 158FDB591D2AEDB800B17072 /* Build configuration list for PBXProject "Emotly" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 158FDB551D2AEDB800B17072;
+			productRefGroup = 158FDB5F1D2AEDB800B17072 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				158FDB5D1D2AEDB800B17072 /* Emotly */,
+				158FDB711D2AEDB800B17072 /* EmotlyTests */,
+				158FDB7C1D2AEDB800B17072 /* EmotlyUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		158FDB5C1D2AEDB800B17072 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				158FDB6C1D2AEDB800B17072 /* LaunchScreen.storyboard in Resources */,
+				158FDB691D2AEDB800B17072 /* Assets.xcassets in Resources */,
+				158FDB671D2AEDB800B17072 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		158FDB701D2AEDB800B17072 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		158FDB7B1D2AEDB800B17072 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		158FDB5A1D2AEDB800B17072 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				158FDB641D2AEDB800B17072 /* ViewController.swift in Sources */,
+				158FDB621D2AEDB800B17072 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		158FDB6E1D2AEDB800B17072 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				158FDB771D2AEDB800B17072 /* EmotlyTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		158FDB791D2AEDB800B17072 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				158FDB821D2AEDB800B17072 /* EmotlyUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		158FDB741D2AEDB800B17072 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 158FDB5D1D2AEDB800B17072 /* Emotly */;
+			targetProxy = 158FDB731D2AEDB800B17072 /* PBXContainerItemProxy */;
+		};
+		158FDB7F1D2AEDB800B17072 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 158FDB5D1D2AEDB800B17072 /* Emotly */;
+			targetProxy = 158FDB7E1D2AEDB800B17072 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		158FDB651D2AEDB800B17072 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				158FDB661D2AEDB800B17072 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		158FDB6A1D2AEDB800B17072 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				158FDB6B1D2AEDB800B17072 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		158FDB841D2AEDB800B17072 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		158FDB851D2AEDB800B17072 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		158FDB871D2AEDB800B17072 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Emotly/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.sempliva.Emotly;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		158FDB881D2AEDB800B17072 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = Emotly/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.sempliva.Emotly;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		158FDB8A1D2AEDB800B17072 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = EmotlyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.sempliva.EmotlyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Emotly.app/Emotly";
+			};
+			name = Debug;
+		};
+		158FDB8B1D2AEDB800B17072 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = EmotlyTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.sempliva.EmotlyTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Emotly.app/Emotly";
+			};
+			name = Release;
+		};
+		158FDB8D1D2AEDB800B17072 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = EmotlyUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.sempliva.EmotlyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Emotly;
+			};
+			name = Debug;
+		};
+		158FDB8E1D2AEDB800B17072 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = EmotlyUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.sempliva.EmotlyUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Emotly;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		158FDB591D2AEDB800B17072 /* Build configuration list for PBXProject "Emotly" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				158FDB841D2AEDB800B17072 /* Debug */,
+				158FDB851D2AEDB800B17072 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		158FDB861D2AEDB800B17072 /* Build configuration list for PBXNativeTarget "Emotly" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				158FDB871D2AEDB800B17072 /* Debug */,
+				158FDB881D2AEDB800B17072 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		158FDB891D2AEDB800B17072 /* Build configuration list for PBXNativeTarget "EmotlyTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				158FDB8A1D2AEDB800B17072 /* Debug */,
+				158FDB8B1D2AEDB800B17072 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		158FDB8C1D2AEDB800B17072 /* Build configuration list for PBXNativeTarget "EmotlyUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				158FDB8D1D2AEDB800B17072 /* Debug */,
+				158FDB8E1D2AEDB800B17072 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 158FDB561D2AEDB800B17072 /* Project object */;
+}
