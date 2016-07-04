@@ -28,6 +28,7 @@ class ViewController: UIViewController {
 
         screen.text = "Waiting..."
         emtlService.updateEmotlies(updateScreenWithEmotlies)
+        emtlService.login("michelangelo", password: "michelangelo")
     }
 
     override func didReceiveMemoryWarning() {
