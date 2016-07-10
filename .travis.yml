@@ -1,15 +1,37 @@
 #
-# Please don't change this file unless you know what you are doing.
+# *********************************************************************
+# * Please don't change this file unless you know what you are doing. *
+# *********************************************************************
 #
 
 language: objective-c
 osx_image: xcode7.3
 
-# We're using the 'script' section here to drive the tests instead of
-# xcode_project/xcode_scheme provided by Travis. This is because we
-# can better address non-trivial scenarios.
+#
+# Travis supports xctool by default but there is an issue with it as
+# also noted in https://github.com/travis-ci/travis-ci/issues/3986
+#
+# In light of this, we have decided to disable xctool and solely
+# rely on xcodebuild. However, the necessary configuration parameters
+# follow (commented out).
+#xcode_project: Emotly.xcodeproj
+##xcode_workspace: 
+#xcode_scheme: Emotly
+#xcode_sdk: iphonesimulator9.3
+
+#
+# Carthage needs to be setup and bootstrapped.
+# In order to minimize the build time, we only bootstrap the Carhage
+# dependencies for iOS.
+before_install:
+  - brew update
+  - brew outdated carthage || brew upgrade carthage
+before_script:
+  - carthage bootstrap --platform 'iOS'
+
+#
+# This is where we deal with xcodebuild directly.
 script:
-#  xctool -project emotly/emotly.xcodeproj -scheme emotly -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6 Plus' build test ONLY_ACTIVE_ARCH=NO CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO
-  - set -o pipefail && xcodebuild clean -project Emotly/Emotly.xcodeproj -scheme Emotly -destination 'platform=iOS Simulator,name=iPhone 6s' | xcpretty
-  - set -o pipefail && xcodebuild build -project Emotly/Emotly.xcodeproj -scheme Emotly -destination 'platform=iOS Simulator,name=iPhone 6s' | xcpretty
-  - set -o pipefail && xcodebuild test -project Emotly/Emotly.xcodeproj -scheme Emotly -destination 'platform=iOS Simulator,name=iPhone 6s' | xcpretty
+  - set -o pipefail && xcodebuild clean -project Emotly.xcodeproj -scheme Emotly -destination 'platform=iOS Simulator,name=iPhone 6s' | xcpretty
+  - set -o pipefail && xcodebuild build -project Emotly.xcodeproj -scheme Emotly -destination 'platform=iOS Simulator,name=iPhone 6s' | xcpretty
+  - set -o pipefail && xcodebuild test -project Emotly.xcodeproj -scheme Emotly -destination 'platform=iOS Simulator,name=iPhone 6s' | xcpretty

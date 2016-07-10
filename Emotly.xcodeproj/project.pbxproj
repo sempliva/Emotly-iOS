@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		15337ECB1D32125200E1FBF8 /* EmotlyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15337ECA1D32125200E1FBF8 /* EmotlyService.swift */; };
+		15337ECD1D3215D100E1FBF8 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 15337ECC1D3215D100E1FBF8 /* Cartfile */; };
+		15337ECF1D3216FC00E1FBF8 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15337ECE1D3216FC00E1FBF8 /* Alamofire.framework */; };
+		15337ED21D32192400E1FBF8 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15337ED11D32192400E1FBF8 /* SwiftyJSON.framework */; };
 		158FDB621D2AEDB800B17072 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158FDB611D2AEDB800B17072 /* AppDelegate.swift */; };
 		158FDB641D2AEDB800B17072 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158FDB631D2AEDB800B17072 /* ViewController.swift */; };
 		158FDB671D2AEDB800B17072 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 158FDB651D2AEDB800B17072 /* Main.storyboard */; };
@@ -34,6 +38,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		15337ECA1D32125200E1FBF8 /* EmotlyService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmotlyService.swift; sourceTree = "<group>"; };
+		15337ECC1D3215D100E1FBF8 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
+		15337ECE1D3216FC00E1FBF8 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		15337ED11D32192400E1FBF8 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		158FDB5E1D2AEDB800B17072 /* Emotly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Emotly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		158FDB611D2AEDB800B17072 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		158FDB631D2AEDB800B17072 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -54,6 +62,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15337ECF1D3216FC00E1FBF8 /* Alamofire.framework in Frameworks */,
+				15337ED21D32192400E1FBF8 /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,13 +84,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		15337ED31D32226000E1FBF8 /* External Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				15337ED11D32192400E1FBF8 /* SwiftyJSON.framework */,
+				15337ECE1D3216FC00E1FBF8 /* Alamofire.framework */,
+			);
+			name = "External Frameworks";
+			sourceTree = "<group>";
+		};
 		158FDB551D2AEDB800B17072 = {
 			isa = PBXGroup;
 			children = (
 				158FDB601D2AEDB800B17072 /* Emotly */,
+				15337ECC1D3215D100E1FBF8 /* Cartfile */,
 				158FDB751D2AEDB800B17072 /* EmotlyTests */,
 				158FDB801D2AEDB800B17072 /* EmotlyUITests */,
 				158FDB5F1D2AEDB800B17072 /* Products */,
+				15337ED31D32226000E1FBF8 /* External Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,6 +120,7 @@
 			children = (
 				158FDB611D2AEDB800B17072 /* AppDelegate.swift */,
 				158FDB631D2AEDB800B17072 /* ViewController.swift */,
+				15337ECA1D32125200E1FBF8 /* EmotlyService.swift */,
 				158FDB651D2AEDB800B17072 /* Main.storyboard */,
 				158FDB681D2AEDB800B17072 /* Assets.xcassets */,
 				158FDB6A1D2AEDB800B17072 /* LaunchScreen.storyboard */,
@@ -135,6 +157,7 @@
 				158FDB5A1D2AEDB800B17072 /* Sources */,
 				158FDB5B1D2AEDB800B17072 /* Frameworks */,
 				158FDB5C1D2AEDB800B17072 /* Resources */,
+				15337ED01D32174100E1FBF8 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -231,6 +254,7 @@
 			files = (
 				158FDB6C1D2AEDB800B17072 /* LaunchScreen.storyboard in Resources */,
 				158FDB691D2AEDB800B17072 /* Assets.xcassets in Resources */,
+				15337ECD1D3215D100E1FBF8 /* Cartfile in Resources */,
 				158FDB671D2AEDB800B17072 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -251,6 +275,24 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		15337ED01D32174100E1FBF8 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		158FDB5A1D2AEDB800B17072 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -258,6 +300,7 @@
 			files = (
 				158FDB641D2AEDB800B17072 /* ViewController.swift in Sources */,
 				158FDB621D2AEDB800B17072 /* AppDelegate.swift in Sources */,
+				15337ECB1D32125200E1FBF8 /* EmotlyService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,6 +444,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Emotly/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sempliva.Emotly;
@@ -412,6 +459,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Emotly/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.sempliva.Emotly;
@@ -484,6 +535,7 @@
 				158FDB881D2AEDB800B17072 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		158FDB891D2AEDB800B17072 /* Build configuration list for PBXNativeTarget "EmotlyTests" */ = {
 			isa = XCConfigurationList;
@@ -492,6 +544,7 @@
 				158FDB8B1D2AEDB800B17072 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		158FDB8C1D2AEDB800B17072 /* Build configuration list for PBXNativeTarget "EmotlyUITests" */ = {
 			isa = XCConfigurationList;
@@ -500,6 +553,7 @@
 				158FDB8E1D2AEDB800B17072 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
