@@ -13,4 +13,3 @@ script:
   - set -o pipefail && xcodebuild clean -project Emotly/Emotly.xcodeproj -scheme Emotly -destination 'platform=iOS Simulator,name=iPhone 6s' | xcpretty
   - set -o pipefail && xcodebuild build -project Emotly/Emotly.xcodeproj -scheme Emotly -destination 'platform=iOS Simulator,name=iPhone 6s' | xcpretty
   - set -o pipefail && xcodebuild test -project Emotly/Emotly.xcodeproj -scheme Emotly -destination 'platform=iOS Simulator,name=iPhone 6s' | xcpretty
-
