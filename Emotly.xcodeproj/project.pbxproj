@@ -11,8 +11,9 @@
 		15337ECD1D3215D100E1FBF8 /* Cartfile in Resources */ = {isa = PBXBuildFile; fileRef = 15337ECC1D3215D100E1FBF8 /* Cartfile */; };
 		15337ECF1D3216FC00E1FBF8 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15337ECE1D3216FC00E1FBF8 /* Alamofire.framework */; };
 		15337ED21D32192400E1FBF8 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 15337ED11D32192400E1FBF8 /* SwiftyJSON.framework */; };
+		15520F3A1D32C4F30059A334 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15520F391D32C4F30059A334 /* AuthenticationViewController.swift */; };
 		158FDB621D2AEDB800B17072 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158FDB611D2AEDB800B17072 /* AppDelegate.swift */; };
-		158FDB641D2AEDB800B17072 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158FDB631D2AEDB800B17072 /* ViewController.swift */; };
+		158FDB641D2AEDB800B17072 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158FDB631D2AEDB800B17072 /* WelcomeViewController.swift */; };
 		158FDB671D2AEDB800B17072 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 158FDB651D2AEDB800B17072 /* Main.storyboard */; };
 		158FDB691D2AEDB800B17072 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 158FDB681D2AEDB800B17072 /* Assets.xcassets */; };
 		158FDB6C1D2AEDB800B17072 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 158FDB6A1D2AEDB800B17072 /* LaunchScreen.storyboard */; };
@@ -42,9 +43,10 @@
 		15337ECC1D3215D100E1FBF8 /* Cartfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cartfile; sourceTree = "<group>"; };
 		15337ECE1D3216FC00E1FBF8 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		15337ED11D32192400E1FBF8 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
+		15520F391D32C4F30059A334 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
 		158FDB5E1D2AEDB800B17072 /* Emotly.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Emotly.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		158FDB611D2AEDB800B17072 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		158FDB631D2AEDB800B17072 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		158FDB631D2AEDB800B17072 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		158FDB661D2AEDB800B17072 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		158FDB681D2AEDB800B17072 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		158FDB6B1D2AEDB800B17072 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -119,7 +121,8 @@
 			isa = PBXGroup;
 			children = (
 				158FDB611D2AEDB800B17072 /* AppDelegate.swift */,
-				158FDB631D2AEDB800B17072 /* ViewController.swift */,
+				158FDB631D2AEDB800B17072 /* WelcomeViewController.swift */,
+				15520F391D32C4F30059A334 /* AuthenticationViewController.swift */,
 				15337ECA1D32125200E1FBF8 /* EmotlyService.swift */,
 				158FDB651D2AEDB800B17072 /* Main.storyboard */,
 				158FDB681D2AEDB800B17072 /* Assets.xcassets */,
@@ -298,7 +301,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				158FDB641D2AEDB800B17072 /* ViewController.swift in Sources */,
+				15520F3A1D32C4F30059A334 /* AuthenticationViewController.swift in Sources */,
+				158FDB641D2AEDB800B17072 /* WelcomeViewController.swift in Sources */,
 				158FDB621D2AEDB800B17072 /* AppDelegate.swift in Sources */,
 				15337ECB1D32125200E1FBF8 /* EmotlyService.swift in Sources */,
 			);

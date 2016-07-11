@@ -129,11 +129,16 @@ struct EmotlyJWT {
 
  A representation of the Emotly service; exposes all the methods available on
  the backend.
+
+ *DO NOT INSTANTIATE THIS CLASS DIRECTLY*, use the `sharedService` property
+ instead.
  */
 class EmotlyService {
     private var emotlies: Emotlies = []
     private static let emotlyURL = "https://emotly.herokuapp.com/api/1.0"
-    private var jwt: EmotlyJWT?
+    private(set) var jwt: EmotlyJWT?
+
+    static let sharedService = EmotlyService()
 
     /**
 
