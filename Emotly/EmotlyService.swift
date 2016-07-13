@@ -156,7 +156,7 @@ class EmotlyService {
         let endpoint = EmotlyService.emotlyURL + "/login"
         let req = Alamofire.request(.POST, endpoint, parameters: credentials, encoding: .JSON)
         req.validate().response { request, response, data, error in
-            guard  error == nil else {
+            guard error == nil else {
                 doneCallback(false, error)
                 return
             }
