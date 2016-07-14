@@ -139,7 +139,10 @@ class EmotlyService {
     private(set) var jwt: EmotlyJWT?
 
     static let sharedService = EmotlyService()
-
+    
+    
+    private init() {}
+    
     /**
 
     Attempt to login with the given credentials.
