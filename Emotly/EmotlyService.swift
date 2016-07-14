@@ -25,6 +25,7 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
+import Pantry
 
 /// An Emotly.
 struct Emotly {
@@ -38,6 +39,9 @@ typealias Emotlies = [Emotly] // TODO: Order on the fly?
 
 /// A utility type.
 struct EmotlyUtils {
+    static let EMOTLY_JWT = "EmotlyJWT"
+    static let EMOTLY_JWT_KEY = "EmotlyJWT_JSON_AsString"
+
     static func convertDateFromString(dateString: String) -> NSDate? {
         let dateFormatter = NSDateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
@@ -46,13 +50,22 @@ struct EmotlyUtils {
 }
 
 /// The Emotly JWT.
-struct EmotlyJWT {
+struct EmotlyJWT: Storable {
     private let rawJSON: JSON
 
     init(_ rawJson: JSON) {
         self.rawJSON = rawJson
     }
 
+    init(warehouse: JSONWarehouse) {
+        let wareString = warehouse.get(EmotlyUtils.EMOTLY_JWT_KEY) ?? ""
+        self.rawJSON = JSON.parse(wareString)
+    }
+    
+    func toDictionary() -> [String : AnyObject] {
+        return [EmotlyUtils.EMOTLY_JWT_KEY : rawJSON.rawString()!]
+    }
+    
     var signature: String {
         return rawJSON["signature"].stringValue
     }
@@ -136,13 +149,30 @@ struct EmotlyJWT {
 class EmotlyService {
     private var emotlies: Emotlies = []
     private static let emotlyURL = "https://emotly.herokuapp.com/api/1.0"
-    private(set) var jwt: EmotlyJWT?
+    private var jwt: EmotlyJWT? {
+        didSet {
+            if let jwt = self.jwt {
+                // Persistence of JWT object into Pantry with expiration date.
+                let jwtExpDate = StorageExpiry.Date((jwt.expirationDate)!)
+                Pantry.pack(jwt, key: EmotlyUtils.EMOTLY_JWT, expires: jwtExpDate)
+            }
+            // Remove JWT from Pantry (execute logout).
+            else { Pantry.expire(EmotlyUtils.EMOTLY_JWT) }
+        }
+    }
+
+    func getJWT() -> EmotlyJWT? {
+        if let jwt = self.jwt { return jwt }
+        if let jwt: EmotlyJWT = Pantry.unpack(EmotlyUtils.EMOTLY_JWT) {
+            self.jwt = jwt
+        }
+        return self.jwt
+    }
 
     static let sharedService = EmotlyService()
-    
-    
+
     private init() {}
-    
+
     /**
 
     Attempt to login with the given credentials.
@@ -170,8 +200,11 @@ class EmotlyService {
             }
 
             let json_response = JSON(data: dat)
-            self.jwt = EmotlyJWT(json_response)
-            doneCallback(self.jwt!.isValid, nil)
+            let tempJWT = EmotlyJWT(json_response)
+            let isValid = tempJWT.isValid
+
+            if isValid { self.jwt = tempJWT }
+            doneCallback(isValid, nil)
         }
 
         // TODO: Deal with the non-valid requests here.
