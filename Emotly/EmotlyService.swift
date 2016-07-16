@@ -30,12 +30,28 @@ import Pantry
 /// An Emotly.
 struct Emotly {
     let created_at: NSDate?
-    let mood: String?
+    let mood: String? // We store the mood as plain String because we
+                      // don't need its id here.
     let nickname: String?
+
+}
+
+/// A Mood.
+struct Mood {
+    private let rawJSON: JSON
+    var value: String? { return rawJSON["value"].stringValue }
+    var id: UInt { return rawJSON["id"].uIntValue }
+
+    init(_ rawJSON: JSON) {
+        self.rawJSON = rawJSON
+    }
 }
 
 /// A list of Emotly.
 typealias Emotlies = [Emotly] // TODO: Order on the fly?
+
+/// A list of Mood.
+typealias Moods = [Mood] // TODO: This should be ordered on the fly too.
 
 /// A utility type.
 struct EmotlyUtils {
@@ -86,6 +102,12 @@ struct EmotlyJWT: Storable {
     var expirationDate: NSDate? {
         guard let expire = payload["expire"] else { return nil }
         return EmotlyUtils.convertDateFromString(expire.stringValue)
+    }
+
+    /// Raw, un-pretty, String representation of the JWT.
+    var uglyString: String {
+        return rawJSON.rawString(NSUTF8StringEncoding,
+                                 options: NSJSONWritingOptions(rawValue: 0)) ?? ""
     }
 
     func isOfType(type:  Type) -> Bool {
@@ -147,8 +169,13 @@ struct EmotlyJWT: Storable {
  instead.
  */
 class EmotlyService {
-    private var emotlies: Emotlies = []
     private static let emotlyURL = "https://emotly.herokuapp.com/api/1.0"
+    private(set) var emotlies: Emotlies = []
+    private(set) var moods: Moods = []
+
+    static let sharedService = EmotlyService()
+
+    // The internal JWT. Consumers should use getJWT().
     private var jwt: EmotlyJWT? {
         didSet {
             if let jwt = self.jwt {
@@ -161,17 +188,7 @@ class EmotlyService {
         }
     }
 
-    func getJWT() -> EmotlyJWT? {
-        if let jwt = self.jwt { return jwt }
-        if let jwt: EmotlyJWT = Pantry.unpack(EmotlyUtils.EMOTLY_JWT) {
-            self.jwt = jwt
-        }
-        return self.jwt
-    }
-
-    static let sharedService = EmotlyService()
-
-    private init() {}
+    private init() {} // EmotlyService is a singleton object: enforcing.
 
     /**
 
@@ -195,6 +212,7 @@ class EmotlyService {
             }
 
             guard let dat = data else {
+                // TODO: Customize the error here.
                 doneCallback(false, error)
                 return
             }
@@ -205,6 +223,55 @@ class EmotlyService {
 
             if isValid { self.jwt = tempJWT }
             doneCallback(isValid, nil)
+        }
+
+        // TODO: Deal with the non-valid requests here.
+    }
+
+    /**
+
+     Issues a request to post a new Emotly with the specified mood.
+
+     - Parameters:
+        - id: the id of the mood
+        - doneCallback: The handler to be called when the operation ends.
+     */
+    func postEmotlyWithMood(id: UInt, doneCallback: (Emotly?, NSError?) -> Void) {
+        guard jwt != nil else {
+            doneCallback(nil, nil) // TODO: We need a custom error here.
+            return
+        }
+
+        let endpoint = EmotlyService.emotlyURL + "/emotlies/new"
+        let newEmotly = ["mood" : id]
+
+        let req = Alamofire.request(.POST, endpoint, encoding: .JSON,
+                                    headers: reqHeaders(),
+                                    parameters: newEmotly)
+        req.validate().response { request, response, data, error in
+            guard error == nil else {
+                doneCallback(nil, error)
+                return
+            }
+
+            guard let dat = data else {
+                // TODO: Customize the error here.
+                doneCallback(nil, error)
+                return
+            }
+
+            // If everything has worked out, we create a new Emotly and we
+            // append it to our internal list.
+            let subjson = JSON(data: dat)
+            guard let newEmotly = self.createEmotlyFromJSON(subjson["emotly"]) else {
+                // TODO: We need to return an appropriate (proprietary) error
+                // because the request hasn't failed but the parsing of the
+                // Emotly has. Tip: subclass NSError and create EmotlyError.
+                doneCallback(nil, nil)
+                return
+            }
+            self.emotlies.append(newEmotly)
+            doneCallback(newEmotly, nil)
         }
 
         // TODO: Deal with the non-valid requests here.
@@ -228,6 +295,7 @@ class EmotlyService {
             }
 
             guard let dat = data else {
+                // TODO: Customize the error here.
                 doneCallback(nil, error)
                 return
             }
@@ -243,6 +311,53 @@ class EmotlyService {
             // TODO: Order the self.emotlies before calling doneCallback.
             doneCallback(self.emotlies, nil)
         }
+    }
+
+    /**
+
+    Refresh the internal list of moods; this operation is required before
+    being able to post a new Emotly.
+
+    - Parameters:
+        - doneCallback: The handler to be called when the operation ends.
+    */
+    func updateMoods(doneCallback: (NSError?) -> Void) {
+
+        let endpoint = EmotlyService.emotlyURL + "/moods"
+        let req = Alamofire.request(.GET, endpoint)
+        req.validate().response { request, response, data, error in
+            guard error == nil else {
+                doneCallback(error)
+                return
+            }
+
+            guard let dat = data else {
+                // TODO: Customize the error here.
+                return
+            }
+
+            let json_dat = JSON(data: dat)
+            for (_, subjson): (String, JSON) in json_dat["moods"] {
+                self.moods.append(Mood(subjson))
+            }
+
+            doneCallback(nil)
+        }
+    }
+
+    /// Returns the current JWT, if available.
+    func getJWT() -> EmotlyJWT? {
+        if let jwt = self.jwt { return jwt }
+        if let jwt: EmotlyJWT = Pantry.unpack(EmotlyUtils.EMOTLY_JWT) {
+            self.jwt = jwt
+        }
+
+        return self.jwt
+    }
+
+    /// Used to get prepopulated HTTP headers (incl. the auth info).
+    private  func reqHeaders() -> [String : String] {
+        return ["X-Emotly-Auth-Token" : jwt!.uglyString]
     }
 
     private func createEmotlyFromJSON(emotlyJson: JSON) -> Emotly? {

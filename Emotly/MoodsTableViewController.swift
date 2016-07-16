@@ -23,20 +23,31 @@
  */
 
 import UIKit
-import Pantry
 
-class WelcomeViewController: UIViewController {
-    @IBOutlet weak var newEmotlyButton: UIButton!
-    @IBOutlet weak var welcomeLabel: UILabel!
-    @IBOutlet weak var loginButton: UIButton!
+class MoodsTableViewController: UITableViewController {
+    private let emoServ: EmotlyService = EmotlyService.sharedService
 
-    func prepareInterfaceForUser() {
-        dispatch_async(dispatch_get_main_queue(), {
-            let nick = EmotlyService.sharedService.getJWT()!.nickname ?? "Bah"
-            self.loginButton.hidden = true
-            self.newEmotlyButton.hidden = !self.loginButton.hidden
-            self.welcomeLabel.text = "Welcome, \(nick)"
+    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return emoServ.moods.count
+    }
+
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("emoCell", forIndexPath:indexPath)
+
+        cell.textLabel?.text = emoServ.moods[indexPath.row].value ?? "EmptyMood"
+
+        return cell
+    }
+
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        dismissViewControllerAnimated(true, completion: {
+            self.emoServ.postEmotlyWithMood(UInt(indexPath.row + 1), doneCallback: { emt, err in
+                self.dismissViewControllerAnimated(true, completion: {})
+            })
         })
     }
 }
-

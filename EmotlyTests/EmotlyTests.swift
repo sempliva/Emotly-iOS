@@ -83,4 +83,15 @@ class EmotlyTests: XCTestCase {
 
         waitForExpectationsWithTimeout(TIMEOUT, handler: nil)
     }
+
+    func testLibEmotlyMoods()  {
+        let exp = expectationWithDescription("Expected list of moods")
+
+        emoServ.updateMoods { err in
+            XCTAssertGreaterThan(self.emoServ.moods.count, 5)
+            exp.fulfill()
+        }
+
+        waitForExpectationsWithTimeout(TIMEOUT, handler: nil)
+    }
 }
