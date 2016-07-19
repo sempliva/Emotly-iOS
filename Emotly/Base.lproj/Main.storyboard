@@ -31,18 +31,28 @@
                                     <segue destination="xAl-U7-JXU" kind="presentation" id="d79-bd-NC3"/>
                                 </connections>
                             </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u9p-sa-OlR">
+                                <rect key="frame" x="229" y="323" width="143" height="30"/>
+                                <state key="normal" title="How are you feeling?"/>
+                                <connections>
+                                    <segue destination="Q05-i0-idg" kind="presentation" id="z78-HK-JaT"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="inZ-I9-Pal" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="5V0-K1-ZZw"/>
                             <constraint firstAttribute="trailingMargin" secondItem="inZ-I9-Pal" secondAttribute="trailing" id="Hhl-Vk-Wtj"/>
                             <constraint firstItem="Fiu-qB-pqg" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="M6b-4W-JwR"/>
+                            <constraint firstItem="u9p-sa-OlR" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="MJ7-43-vJH"/>
                             <constraint firstItem="Fiu-qB-pqg" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Us0-a4-fAh"/>
+                            <constraint firstItem="u9p-sa-OlR" firstAttribute="top" secondItem="Fiu-qB-pqg" secondAttribute="bottom" constant="8" id="rkE-va-QqL"/>
                             <constraint firstAttribute="leadingMargin" secondItem="inZ-I9-Pal" secondAttribute="leading" id="tzn-hB-5Fs"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="loginButton" destination="Fiu-qB-pqg" id="Hi5-Pk-59T"/>
+                        <outlet property="newEmotlyButton" destination="u9p-sa-OlR" id="wiM-Hq-8eT"/>
                         <outlet property="welcomeLabel" destination="inZ-I9-Pal" id="R18-BM-Iut"/>
                     </connections>
                 </viewController>
@@ -147,7 +157,43 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lt4-VQ-kC3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="289" y="317"/>
+            <point key="canvasLocation" x="407" y="1073"/>
+        </scene>
+        <!--Moods Table View Controller-->
+        <scene sceneID="7Z8-K4-Vob">
+            <objects>
+                <tableViewController id="Q05-i0-idg" customClass="MoodsTableViewController" customModule="Emotly" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="mB5-IX-Sxh">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="emoCell" textLabel="vKb-pk-7hx" style="IBUITableViewCellStyleDefault" id="RM8-Xm-gRn">
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RM8-Xm-gRn" id="bkX-Gd-9sg">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vKb-pk-7hx">
+                                            <rect key="frame" x="15" y="0.0" width="570" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Q05-i0-idg" id="wNf-ld-Z1Z"/>
+                            <outlet property="delegate" destination="Q05-i0-idg" id="d98-a5-7Ha"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="V0I-Kd-myx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
         </scene>
     </scenes>
 </document>
