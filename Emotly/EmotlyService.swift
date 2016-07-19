@@ -192,6 +192,28 @@ class EmotlyService {
 
     /**
 
+     Check if JWT is valid.
+
+     - Parameters:
+     - doneCallback: the handler to be called when the operation ends.
+     If the jwt is valid, the `Bool` parameter would be true, false otherwise.
+     */
+    func is_jwt_valid(doneCallback: (Bool, NSError?) -> Void) {
+        let endpoint = EmotlyService.emotlyURL + "/is_jwt_valid"
+        let req = Alamofire.request(.POST, endpoint, encoding: .JSON,
+                                    headers: reqHeaders())
+        req.validate().response { request, response, data, error in
+            guard error == nil else {
+                doneCallback(false, error)
+                return
+            }
+            doneCallback(true, nil)
+        }
+        // TODO: Deal with the non-valid requests here.
+    }
+
+    /**
+
     Attempt to login with the given credentials.
 
     - Parameters:
@@ -351,13 +373,12 @@ class EmotlyService {
         if let jwt: EmotlyJWT = Pantry.unpack(EmotlyUtils.EMOTLY_JWT) {
             self.jwt = jwt
         }
-
         return self.jwt
     }
 
     /// Used to get prepopulated HTTP headers (incl. the auth info).
     private  func reqHeaders() -> [String : String] {
-        return ["X-Emotly-Auth-Token" : jwt!.uglyString]
+        return ["X-Emotly-Auth-Token" : getJWT()!.uglyString]
     }
 
     private func createEmotlyFromJSON(emotlyJson: JSON) -> Emotly? {
