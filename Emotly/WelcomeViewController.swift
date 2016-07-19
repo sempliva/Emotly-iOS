@@ -23,6 +23,7 @@
  */
 
 import UIKit
+import Pantry
 
 class WelcomeViewController: UIViewController {
     @IBOutlet weak var welcomeLabel: UILabel!
@@ -30,9 +31,7 @@ class WelcomeViewController: UIViewController {
 
     func prepareInterfaceForUser() {
         dispatch_async(dispatch_get_main_queue(), {
-            let emoServ = EmotlyService.sharedService
-            let nick = emoServ.jwt?.nickname ?? "Bah"
-
+            let nick = EmotlyService.sharedService.getJWT()!.nickname ?? "Bah"
             self.loginButton.hidden = true
             self.welcomeLabel.text = "Welcome, \(nick)"
         })

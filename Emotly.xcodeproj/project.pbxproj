@@ -19,6 +19,7 @@
 		158FDB6C1D2AEDB800B17072 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 158FDB6A1D2AEDB800B17072 /* LaunchScreen.storyboard */; };
 		158FDB771D2AEDB800B17072 /* EmotlyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158FDB761D2AEDB800B17072 /* EmotlyTests.swift */; };
 		158FDB821D2AEDB800B17072 /* EmotlyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158FDB811D2AEDB800B17072 /* EmotlyUITests.swift */; };
+		68DC788B1D3709BE00442016 /* Pantry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68DC788A1D3709BE00442016 /* Pantry.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		158FDB7D1D2AEDB800B17072 /* EmotlyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EmotlyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		158FDB811D2AEDB800B17072 /* EmotlyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotlyUITests.swift; sourceTree = "<group>"; };
 		158FDB831D2AEDB800B17072 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		68DC788A1D3709BE00442016 /* Pantry.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pantry.framework; path = Carthage/Build/iOS/Pantry.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,8 +66,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				15337ECF1D3216FC00E1FBF8 /* Alamofire.framework in Frameworks */,
 				15337ED21D32192400E1FBF8 /* SwiftyJSON.framework in Frameworks */,
+				15337ECF1D3216FC00E1FBF8 /* Alamofire.framework in Frameworks */,
+				68DC788B1D3709BE00442016 /* Pantry.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,6 +92,7 @@
 		15337ED31D32226000E1FBF8 /* External Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				68DC788A1D3709BE00442016 /* Pantry.framework */,
 				15337ED11D32192400E1FBF8 /* SwiftyJSON.framework */,
 				15337ECE1D3216FC00E1FBF8 /* Alamofire.framework */,
 			);
@@ -287,6 +291,7 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Alamofire.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Pantry.framework",
 			);
 			outputPaths = (
 			);
