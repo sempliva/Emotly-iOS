@@ -345,6 +345,43 @@ class EmotlyService {
         }
     }
 
+    /**
+
+     Register a new user with the given credentials.
+
+     - Parameters:
+         - nickname: The nickname associated to the new account.
+         - email: The email address associated to the new account.
+         - password: The password associated to the new account (hear head!).
+     */
+    func signupWith(nickname: String, email: String, password: String,
+                doneCallback: (Bool, NSError?) -> Void) {
+        let endpoint = EmotlyService.emotlyURL + "/signup"
+
+        // TODO: Validate and clean-up UI values here!
+
+        let newEmotly = ["inputNickname" : nickname, "inputEmail" : email,
+                         "inputPassword"  : password]
+
+        let req = Alamofire.request(.POST, endpoint, encoding: .JSON,
+                                    parameters: newEmotly)
+        req.validate().response { request, response, data, error in
+            guard error == nil else {
+                doneCallback(false, error)
+                return
+            }
+
+            // /signup API returns HTTP 200 if the account is OK. So we don't
+            // really need to do any other work here.
+            doneCallback(true, nil)
+            return
+        }
+
+        // TODO: /signup API returns errors as HTTP status codes, so we're
+        // gonna need to customize those and return them to the user.
+        doneCallback(false, nil)
+    }
+
     /// Returns the current JWT, if available.
     func getJWT() -> EmotlyJWT? {
         if let jwt = self.jwt { return jwt }
