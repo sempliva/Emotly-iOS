@@ -30,7 +30,11 @@ class AuthenticationViewController: UIViewController {
     @IBOutlet weak var userField: UITextField!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var errorLabel: UILabel!
-
+    
+    @IBAction func setLoginBtnStatus() {
+        loginButton.enabled = !pwdField.text!.isEmpty && !userField.text!.isEmpty
+    }
+    
     @IBAction func loginBtnPressed() {
         errorLabel.hidden = true
         setControlsStatus(false)
