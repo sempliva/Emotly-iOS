@@ -1,0 +1,16 @@
+When it's time to release a new version, here's what needs to be done:
+
+1. asses the current marketing version and build number:
+    ./Version.sh
+
+2. bump the build number:
+    ./Version.sh -b
+
+3. tag the current version:
+    git tag vX.Y.Z (eg: git tag v1.2.3)
+
+4. set the new marketing version:
+    ./Version.sh -s --plist-path Emotly
+
+Also, don't forget to push --tags next time.
+Then you're free to release.:)
