@@ -23,6 +23,7 @@
 		158FDB821D2AEDB800B17072 /* EmotlyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158FDB811D2AEDB800B17072 /* EmotlyUITests.swift */; };
 		15CEFAC81D3B203F0027CD4D /* MoodsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15CEFAC71D3B203F0027CD4D /* MoodsTableViewController.swift */; };
 		68DC788B1D3709BE00442016 /* Pantry.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 68DC788A1D3709BE00442016 /* Pantry.framework */; };
+		68F5012D1D5B361000AAAE85 /* LoginUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F5012C1D5B361000AAAE85 /* LoginUITextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		158FDB831D2AEDB800B17072 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		15CEFAC71D3B203F0027CD4D /* MoodsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoodsTableViewController.swift; sourceTree = "<group>"; };
 		68DC788A1D3709BE00442016 /* Pantry.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pantry.framework; path = Carthage/Build/iOS/Pantry.framework; sourceTree = "<group>"; };
+		68F5012C1D5B361000AAAE85 /* LoginUITextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginUITextField.swift; path = emotly/LoginUITextField.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +140,7 @@
 				1513B15C1D42E3B000F200A3 /* RegistrationResultViewController.swift */,
 				15337ECA1D32125200E1FBF8 /* EmotlyService.swift */,
 				158FDB651D2AEDB800B17072 /* Main.storyboard */,
+				68F5012C1D5B361000AAAE85 /* LoginUITextField.swift */,
 				158FDB681D2AEDB800B17072 /* Assets.xcassets */,
 				158FDB6A1D2AEDB800B17072 /* LaunchScreen.storyboard */,
 				158FDB6D1D2AEDB800B17072 /* Info.plist */,
@@ -316,6 +319,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1513B15B1D428F4900F200A3 /* RegistrationViewController.swift in Sources */,
+				68F5012D1D5B361000AAAE85 /* LoginUITextField.swift in Sources */,
 				15520F3A1D32C4F30059A334 /* AuthenticationViewController.swift in Sources */,
 				15CEFAC81D3B203F0027CD4D /* MoodsTableViewController.swift in Sources */,
 				158FDB641D2AEDB800B17072 /* WelcomeViewController.swift in Sources */,
